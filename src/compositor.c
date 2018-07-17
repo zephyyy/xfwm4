@@ -1072,6 +1072,7 @@ check_glx_renderer (ScreenInfo *screen_info)
         g_warning ("Cannot identify GLX renderer.");
         return FALSE;
     }
+    DBG ("Using GL renderer: %s", glRenderer);
 
     i = 0;
     while (blacklisted[i] && !strcasestr (glRenderer, blacklisted[i]))
