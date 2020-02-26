@@ -645,6 +645,12 @@ main (int argc, char **argv)
 
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
+    /* xfwm4 is an X11 window manager, no point in trying to connect to
+     * any other display server (like when running nested within a
+     * Wayland compositor).
+     */
+    gdk_set_allowed_backends ("x11");
+
     context = g_option_context_new (_("[ARGUMENTS...]"));
     g_option_context_add_main_entries (context, option_entries, GETTEXT_PACKAGE);
     g_option_context_add_group (context, gtk_get_option_group (FALSE));
